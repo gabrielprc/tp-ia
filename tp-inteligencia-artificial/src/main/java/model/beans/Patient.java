@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Patient extends BasicBean {
 
 	private String name;
-	private List<Sypmtom> symptoms;
+	private List<Symptom> symptoms;
 	private List<RiskFactor> riskFactors;
 	
 	
@@ -32,10 +32,10 @@ public class Patient extends BasicBean {
 		joinColumns = {@JoinColumn(name = "id_patient")},
 		inverseJoinColumns = {@JoinColumn(name = "id_symptom")}
 	)
-	public List<Sypmtom> getSymptoms() {
+	public List<Symptom> getSymptoms() {
 		return symptoms;
 	}
-	public void setSymptoms(List<Sypmtom> symptoms) {
+	public void setSymptoms(List<Symptom> symptoms) {
 		this.symptoms = symptoms;
 	}
 	@ManyToMany

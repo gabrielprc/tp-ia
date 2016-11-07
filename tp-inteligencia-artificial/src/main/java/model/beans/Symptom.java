@@ -10,7 +10,7 @@ import main.java.model.constants.SymptomType;
 
 @Entity
 @Table(name = "symptoms")
-public class Sypmtom extends BasicBean {
+public class Symptom extends BasicBean {
 	
 	private String name;
 	private SymptomType type;
