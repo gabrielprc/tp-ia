@@ -1,0 +1,48 @@
+CREATE TABLE affections (
+	id BIGINT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	type INT(4) NOT NULL,
+	name VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE patients (
+	id BIGINT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE symptoms (
+	id BIGINT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	type INT(4) NOT NULL,
+	name VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE risk_factors (
+	id BIGINT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	type INT(4) NOT NULL,
+	name VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE patient_symptoms (
+	id_patient BIGINT(6) UNSIGNED,
+	id_symptom BIGINT(6) UNSIGNED,
+	PRIMARY KEY (id_patient, id_symptom),
+	FOREIGN KEY (id_patient) REFERENCES patients(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_symptom) REFERENCES symptoms(id) ON DELETE CASCADE
+);
+
+CREATE TABLE patient_risk_factors (
+	id_patient BIGINT(6) UNSIGNED,
+	id_risk_factor BIGINT(6) UNSIGNED,
+	PRIMARY KEY (id_patient, id_risk_factor),
+	FOREIGN KEY (id_patient) REFERENCES patients(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_risk_factor) REFERENCES risk_factors(id) ON DELETE CASCADE
+);
+
+CREATE TABLE predictions (
+	id BIGINT(6) UNSIGNED PRIMARY KEY,
+	id_patient BIGINT(6) UNSIGNED NOT NULL,
+	id_affection BIGINT(6) UNSIGNED NOT NULL,
+	probability INT(4) NOT NULL,
+	FOREIGN KEY (id_patient) REFERENCES patients(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_affection) REFERENCES affections(id) ON DELETE CASCADE
+);
+
