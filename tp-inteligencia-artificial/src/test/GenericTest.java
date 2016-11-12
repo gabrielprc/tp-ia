@@ -1,18 +1,16 @@
 package test;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.service.ServiceRegistry;
+import java.util.List;
+
+import main.java.model.beans.Affection;
+import main.java.model.dao.AffectionDao;
 
 public class GenericTest {
 
-	private static SessionFactory sessionFactory;
-	private static ServiceRegistry serviceRegistry; 
-	
-	
+		
 	public static void main(String[] args) {
-		
-		
-		
+		AffectionDao dao = new AffectionDao();
+		List<Affection> affections = dao.list();
 	}
 
 }

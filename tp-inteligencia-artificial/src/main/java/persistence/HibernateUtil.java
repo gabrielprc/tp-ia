@@ -36,11 +36,11 @@ public class HibernateUtil {
 		}
 	}
 	
-	public static Session getSession() {
+	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
 			init();
 		}
-		return sessionFactory.openSession();
+		return sessionFactory;
 	}
 
 	

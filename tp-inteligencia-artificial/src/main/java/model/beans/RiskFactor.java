@@ -2,12 +2,10 @@ package main.java.model.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import main.java.model.constants.RiskFactorType;
-import main.java.model.constants.SymptomType;
 
 @Entity
 @Table(name = "risk_factors")
@@ -39,6 +37,7 @@ public class RiskFactor extends BasicBean {
 		this.name = name;
 	}
 	
+	@Transient
 	public RiskFactorType getType() {
 		return type;
 	}
