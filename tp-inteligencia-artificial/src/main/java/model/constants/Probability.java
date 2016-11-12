@@ -14,4 +14,17 @@ public enum Probability {
 		this.probability = probability;
 		this.label = label;
 	}
+
+	public static Probability getByLabel(String label) {
+		for (Probability probability : Probability.values()) {
+			if (probability.label.equalsIgnoreCase(label)) {
+				return probability;
+			}
+		}
+		return UNKNOWN;
+	}
+
+	public String getLabel() {
+		return this.label;
+	}
 }
