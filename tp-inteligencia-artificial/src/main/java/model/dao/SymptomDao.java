@@ -16,4 +16,9 @@ public class SymptomDao extends GenericDao<Symptom> {
 		return listGeneric(Symptom.class);
 	}
 
+	@Override
+	public List<Symptom> list(DaoQuery query) {
+		return listGeneric(Symptom.class, query);
+	}
+
 }

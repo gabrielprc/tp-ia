@@ -16,4 +16,9 @@ public class RiskFactorDao extends GenericDao<RiskFactor> {
 		return listGeneric(RiskFactor.class);
 	}
 
+	@Override
+	public List<RiskFactor> list(DaoQuery query) {
+		return listGeneric(RiskFactor.class, query);
+	}
+
 }

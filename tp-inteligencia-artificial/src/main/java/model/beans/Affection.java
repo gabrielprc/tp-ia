@@ -6,6 +6,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import main.java.model.constants.AffectionType;
+import main.java.model.views.AffectionView;
 
 @Entity
 @Table(name = "affections")
@@ -22,6 +23,15 @@ public class Affection extends BasicBean {
 	
 	public Affection(AffectionType type, String name) {
 		super();
+		this.type = type;
+		if (type != null) {
+			this.typeInt = type.type;
+		}
+		this.name = name;
+	}
+	
+	public Affection(Long id, AffectionType type, String name) {
+		super(id);
 		this.type = type;
 		if (type != null) {
 			this.typeInt = type.type;
@@ -56,6 +66,14 @@ public class Affection extends BasicBean {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public AffectionView toView() {
+		return new AffectionView(id, type, name);
+	}
+	
+	public static Affection fromView(AffectionView view) {
+		return new Affection(view.getType(), view.getName());
 	}
 	
 }

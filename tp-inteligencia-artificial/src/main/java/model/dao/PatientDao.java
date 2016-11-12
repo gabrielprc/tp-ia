@@ -16,4 +16,9 @@ public class PatientDao extends GenericDao<Patient> {
 		return listGeneric(Patient.class);
 	}
 
+	@Override
+	public List<Patient> list(DaoQuery query) {
+		return listGeneric(Patient.class, query);
+	}
+
 }

@@ -6,6 +6,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import main.java.model.constants.RiskFactorType;
+import main.java.model.views.RiskFactorView;
 
 @Entity
 @Table(name = "risk_factors")
@@ -21,6 +22,15 @@ public class RiskFactor extends BasicBean {
 	
 	public RiskFactor(String name, RiskFactorType type) {
 		super();
+		this.name = name;
+		this.type = type;
+		if (type != null) {
+			
+		}
+	}
+	
+	public RiskFactor(Long id, String name, RiskFactorType type) {
+		super(id);
 		this.name = name;
 		this.type = type;
 		if (type != null) {
@@ -55,6 +65,14 @@ public class RiskFactor extends BasicBean {
 	public void setTypeInt(Integer typeInt) {
 		this.typeInt = typeInt;
 		this.type = RiskFactorType.getByType(typeInt);
+	}
+	
+	public RiskFactorView toView() {
+		return new RiskFactorView(id, name, type, typeInt);
+	}
+	
+	public static RiskFactor fromView(RiskFactorView view) {
+		return new RiskFactor(view.getName(), view.getType());
 	}
 	
 }
