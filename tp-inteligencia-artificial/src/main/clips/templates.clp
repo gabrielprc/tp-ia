@@ -1,31 +1,5 @@
 ; Definicion de Templates
 
-; Template de Trastorno
-
-(deftemplate Trastorno
-	(slot Tipo
-		(type STRING)
-		(allowed-strings "Dental" "Periodontal" "Temporomandibular"))
-	(slot Nombre
-		(type STRING)
-		(allowed-strings
-			"Caries"
-			"Pulpitis"
-			"Fractura"
-			"Dislocacion Mandibular"
-			"Osteonecrosis de la Mandibula"
-			"Periodontitis"
-			"Gingivitis"
-			"Gingivitis Ulceronecrotizante Aguda"
-			"Anquilosis de la Articulacion"
-			"Temporomandibular"
-			"Artritis de la Articulacion"
-			"Hiperplasia Condilar Mandibular"
-			"Hipoplasia Condilar Mandibular"
-			"Dolor Miofascial"
-			"Trastornos de la Articulacion"
-			"Temporomandibular")))
-
 ; Template de Sintoma
 
 (deftemplate Sintoma

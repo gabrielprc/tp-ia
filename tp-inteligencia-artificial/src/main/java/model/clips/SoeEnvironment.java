@@ -9,8 +9,9 @@ public class SoeEnvironment extends Environment {
 
     public SoeEnvironment() {
         super();
-        super.loadFromResource("/main/clips/rules.clp");
         super.loadFromResource("/main/clips/templates.clp");
+        super.loadFromResource("/main/clips/rules.clp");
+        super.loadFromResource("/main/clips/functions.clp");
     }
 
 }

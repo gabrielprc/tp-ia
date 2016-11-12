@@ -1,0 +1,1 @@
+cp CLIPSJNI64.dll C:\Windows\System32\CLIPSJNI.dll
