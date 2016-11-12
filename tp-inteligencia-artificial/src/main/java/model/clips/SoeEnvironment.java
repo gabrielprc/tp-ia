@@ -36,8 +36,8 @@ public class SoeEnvironment extends Environment {
 
         for (int i = 0; i < facts.size(); i++) {
             FactAddressValue fact = (FactAddressValue) facts.get(i);
-            //TODO: map affection type to affection name
-            Affection affection = new Affection(AffectionType.DENTAL, getStringFromSlot(fact, "PosibleTrastorno"));
+            String affectionName = getStringFromSlot(fact, "PosibleTrastorno");
+            Affection affection = new Affection(AffectionMapper.getType(affectionName), affectionName);
             Probability probability = Probability.getByLabel(getStringFromSlot(fact, "Probabilidad"));
             String justification = getStringFromSlot(fact, "Justificacion");
             predictions.add(new Prediction(patient, affection, probability, justification));
