@@ -4,27 +4,37 @@
 
 (deftemplate Sintoma
 	(slot Sensibilidad 
-		(type STRING) (allowed-strings "Frio" "Calor")
+		(type STRING) (allowed-strings
+                            "Sin Informacion"
+                            "Frio"
+                            "Calor")
+                      (default "Sin Informacion")
 	)
 	(slot Dolor 
-		(type STRING) (allowed-strings 
+		(type STRING) (allowed-strings
+		                    "Sin Informacion"
                             "Al morder" 
                             "Sensacion de diente flojo" 
                             "De cabeza" "Al tragar" 
-                            "En las articulaciones temporomandibulares") 
+                            "En las articulaciones temporomandibulares")
+                      (default "Sin Informacion")
 	)
 	(slot Inflamacion 
-		(type STRING) (allowed-strings 
+		(type STRING) (allowed-strings
+		                    "Sin Informacion"
                             "Enrojecimiento de las encias" 
                             "Hinchazon de las encias" 
                             "Sangrado de encias" 
                             "Bruxismo")
+                      (default "Sin Informacion")
 	)
 	(slot Salud 
-		(type STRING) (allowed-strings 
+		(type STRING) (allowed-strings
+		                    "Sin Informacion"
                             "Mal aliento" 
                             "Exceso de placa" 
                             "Exceso de saliva")
+                      (default "Sin Informacion")
 	)
 )
 
@@ -32,18 +42,22 @@
 
 (deftemplate FactorDeRiesgo 
     (slot Enfermedad
-        (type STRING) (allowed-strings 
+        (type STRING) (allowed-strings
+                            "Sin Informacion"
                             "Defectos dentales" 
                             "Flujo salival reducido" 
                             "Obesidad" 
                             "Diabetes")
+                      (default "Sin Informacion")
     )
     (slot Habito
-        (type STRING) (allowed-strings 
+        (type STRING) (allowed-strings
+                            "Sin Informacion"
                             "Control inadecuado de la placa" 
                             "Fumar" 
                             "Deficiencia de vitamina C" 
-                            "Dieta excesiva en carbohidratos y azucares" ) 
+                            "Dieta excesiva en carbohidratos y azucares" )
+                      (default "Sin Informacion")
     )
 )
 
