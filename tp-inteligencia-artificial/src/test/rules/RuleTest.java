@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.model.beans.Patient;
+import main.java.model.beans.Prediction;
 import main.java.model.beans.RiskFactor;
 import main.java.model.beans.Symptom;
 import main.java.model.clips.SoeEnvironment;
@@ -34,8 +35,15 @@ public class RuleTest implements Runnable {
 		}
 		
 		env.run();
-		
-		env.getPredictions(patient);
+
+		List<Prediction> predictions = env.getPredictions(patient);
+		for (Prediction prediction : predictions) {
+			System.out.println(String.format("%s: %s - %s (from '%s')",
+					prediction.getPatient().getName(),
+					prediction.getAffection().getName(),
+					prediction.getProbability().getLabel(),
+					prediction.getJustification()));
+		}
 	}
 	
 	public void add(Symptom symptom) {
