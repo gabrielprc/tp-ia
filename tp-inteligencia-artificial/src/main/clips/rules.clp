@@ -80,7 +80,7 @@
 (defrule R7
     (Sintoma (Dolor "Sensacion de diente flojo"))
     =>
-    (bind ?j "_")
+    (bind ?j "Sensacion de Diente Flojo")
     (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Media") (Justificacion ?j)))
     (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
     (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja") (Justificacion ?j)))

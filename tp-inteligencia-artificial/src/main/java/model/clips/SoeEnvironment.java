@@ -25,6 +25,12 @@ public class SoeEnvironment extends Environment {
         return super.assertString(String.format("(Sintoma (%s \"%s\"))", symptom.getType().label, symptom.getName()));
     }
 
+    public List<PrimitiveValue> assertSymptoms(List<String> symptoms) {
+        List<PrimitiveValue> values = new ArrayList<>();
+        symptoms.forEach(s -> this.assertSymptom(new Symptom(s, TypeMapper.getSymptomType(s))));
+        return values;
+    }
+
     public PrimitiveValue assertRiskFactor(RiskFactor riskFactor) {
         return super.assertString(String.format("(FactorDeRiesgo (%s \"%s\"))",
                 riskFactor.getType().label, riskFactor.getName()));
@@ -37,7 +43,7 @@ public class SoeEnvironment extends Environment {
         for (int i = 0; i < facts.size(); i++) {
             FactAddressValue fact = (FactAddressValue) facts.get(i);
             String affectionName = getStringFromSlot(fact, "PosibleTrastorno");
-            Affection affection = new Affection(AffectionMapper.getType(affectionName), affectionName);
+            Affection affection = new Affection(TypeMapper.getAffectionType(affectionName), affectionName);
             Probability probability = Probability.getByLabel(getStringFromSlot(fact, "Probabilidad"));
             String justification = getStringFromSlot(fact, "Justificacion");
             predictions.add(new Prediction(patient, affection, probability, justification));

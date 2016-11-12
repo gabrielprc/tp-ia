@@ -19,9 +19,9 @@ public class SoeEnvironmentTest {
     public static void main(String[] args) {
         try {
             SoeEnvironment soe = new SoeEnvironment();
-
             Symptom symptom = new Symptom("Frio", SymptomType.SENSITIVITY);
             soe.assertSymptom(symptom);
+            soe.assertSymptom(new Symptom("Bruxismo", SymptomType.INFLAMATION));
             RiskFactor riskFactor = new RiskFactor("Obesidad", RiskFactorType.DISEASE);
             soe.assertRiskFactor(riskFactor);
             soe.run();
