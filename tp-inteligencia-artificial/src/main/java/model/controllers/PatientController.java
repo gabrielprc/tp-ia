@@ -14,12 +14,12 @@ public class PatientController implements Controller<PatientView> {
 	
 	
 	@Override
-	public PatientView create(PatientView view) {
+	public PatientView createOrUpdate(PatientView view) {
 		Patient patient = Patient.fromView(view);
 		patientDao.save(patient);
 		return patient.toView();
 	}
-
+	
 	@Override
 	public List<PatientView> list(DaoQuery query) {
 		List<PatientView> views = new ArrayList<PatientView>();
@@ -30,17 +30,9 @@ public class PatientController implements Controller<PatientView> {
 	}
 
 	@Override
-	public PatientView update(PatientView view) {
-		Patient patient = Patient.fromView(view);
-		patientDao.save(patient);
-		return patient.toView();
-	}
-
-	@Override
 	public void delete(PatientView view) {
 		Patient patient = Patient.fromView(view);
 		patientDao.delete(patient);
 	}
-
 	
 }

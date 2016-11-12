@@ -18,6 +18,7 @@ public class Prediction extends BasicBean {
 	private Patient patient;
 	private Affection affection;
 	private Probability probability;
+	private String justification;
 	
 	
 	public Prediction() {
@@ -64,6 +65,14 @@ public class Prediction extends BasicBean {
 	}
 	public void setProbability(Probability probability) {
 		this.probability = probability;
+	}
+	@Column(name = "justification")
+	public String getJustification() {
+		return justification;
+	}
+
+	public void setJustification(String justification) {
+		this.justification = justification;
 	}
 	
 	public PredictionView toView() {

@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS predictions (
 	id_patient BIGINT(6) UNSIGNED NOT NULL,
 	id_affection BIGINT(6) UNSIGNED NOT NULL,
 	probability INT(4) NOT NULL,
+	justification VARCHAR(500),
 	FOREIGN KEY (id_patient) REFERENCES patients(id) ON DELETE CASCADE,
 	FOREIGN KEY (id_affection) REFERENCES affections(id) ON DELETE CASCADE
 );

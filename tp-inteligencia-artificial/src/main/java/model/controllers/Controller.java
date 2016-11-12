@@ -6,11 +6,9 @@ import main.java.model.dao.DaoQuery;
 
 public interface Controller<V> {
 
-	public V create(V view);
+	public V createOrUpdate(V view);
 	
 	public List<V> list(DaoQuery query);
-	
-	public V update(V view);
 	
 	public void delete(V view);
 	
