@@ -16,6 +16,9 @@ public class AffectionDao extends GenericDao<Affection> {
 		return listGeneric(Affection.class);
 	}
 
-	
+	@Override
+	public List<Affection> list(DaoQuery query) {
+		return listGeneric(Affection.class, query);
+	}
 	
 }

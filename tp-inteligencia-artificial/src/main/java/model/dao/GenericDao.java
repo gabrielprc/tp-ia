@@ -4,8 +4,10 @@ import java.util.List;
 
 import main.java.persistence.HibernateUtil;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 public abstract class GenericDao<T> {
 	
@@ -16,6 +18,8 @@ public abstract class GenericDao<T> {
 	
 	public abstract List<T> list();
 	
+	public abstract List<T> list(DaoQuery query);
+	
 	public void delete(T obj) {
 		callWithSession((s, o) -> delete(s, o[0]), obj);
 	}
@@ -25,7 +29,34 @@ public abstract class GenericDao<T> {
 	}
 	
 	protected List<T> listGeneric(Class clazz) {
-		return (List<T>) callWithSession((s, c) -> (List<T>) s.createCriteria((Class) c[0]).list(), clazz);
+		return listGeneric(clazz, null);
+	}
+	
+	protected List<T> listGeneric(Class clazz, DaoQuery query) {
+		return (List<T>) callWithSession(
+				(s, c)
+					->
+				list(s, (Class) c[0], query),
+				clazz
+			);
+	}
+	
+	private List<T> list(Session session, Class clazz, DaoQuery query) {
+		Criteria criteria = session.createCriteria(clazz); 
+		if (query != null) {
+			if (query.name != null) {
+				criteria.add(Restrictions.like("name", "%" + query.name + "%"));
+			}
+			
+			if (query.id != null) {
+				criteria.add(Restrictions.eq("id", query.id));
+			}
+			
+			if (query.type != null) {
+				criteria.add(Restrictions.eq("type", query.type));
+			}
+		}
+		return (List<T>) criteria.list();
 	}
 	
 	private Object callWithSession(DaoCallable callable, Object... params) {
@@ -37,7 +68,7 @@ public abstract class GenericDao<T> {
 	
 	private Integer saveOrUpdate(Session session, Object obj) {
 		try {
-			session.delete(obj);
+			session.saveOrUpdate(obj);
 		} catch (Exception e) {
 			return 0;
 		}
@@ -46,7 +77,7 @@ public abstract class GenericDao<T> {
 	
 	private Integer delete(Session session, Object obj) {
 		try {
-			session.save(obj);
+			session.delete(obj);
 		} catch (Exception e) {
 			return 0;
 		}

@@ -10,7 +10,17 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class BasicBean {
 	
-	private Long id;
+	protected Long id;
+	
+	public BasicBean() {
+		super();
+	}
+
+	public BasicBean(Long id) {
+		super();
+		this.id = id;
+	}
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
