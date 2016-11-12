@@ -6,11 +6,22 @@ public enum SymptomType {
 	INFLAMATION(3, "Inflamacion"),
 	ORAL_HEALTH(4, "Salud");
 	
-	private int type;
-	private String label;
+	public final int type;
+	public final String label;
 	
 	private SymptomType(int type, String label) {
 		this.type = type;
 		this.label = label;
+	}
+	
+	public static SymptomType getByType(Integer type) {
+		if (type != null) {
+			for (SymptomType s : values()) {
+				if (s.type == type.intValue()) {
+					return s;
+				}
+			}
+		}
+		return null;
 	}
 }

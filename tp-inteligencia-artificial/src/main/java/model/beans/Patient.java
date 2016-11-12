@@ -17,6 +17,17 @@ public class Patient extends BasicBean {
 	private List<Symptom> symptoms;
 	private List<RiskFactor> riskFactors;
 	
+	public Patient() {
+		super();
+	}
+	
+	public Patient(String name, List<Symptom> symptoms, List<RiskFactor> riskFactors) {
+		super();
+		this.name = name;
+		this.symptoms = symptoms;
+		this.riskFactors = riskFactors;
+	}
+	
 	
 	@Column(name = "name")
 	public String getName() {

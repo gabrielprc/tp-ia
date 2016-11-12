@@ -18,6 +18,20 @@ public class Prediction extends BasicBean {
 	private Affection affection;
 	private Probability probability;
 	
+	
+	public Prediction() {
+		super();
+	}
+	
+	public Prediction(Patient patient, Affection affection,
+			Probability probability) {
+		super();
+		this.patient = patient;
+		this.affection = affection;
+		this.probability = probability;
+	}
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "id_patient")
 	public Patient getPatient() {
