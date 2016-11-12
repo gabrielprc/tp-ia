@@ -1,7 +1,11 @@
 package test;
 
 import main.java.model.beans.Prediction;
+import main.java.model.beans.RiskFactor;
+import main.java.model.beans.Symptom;
 import main.java.model.clips.SoeEnvironment;
+import main.java.model.constants.RiskFactorType;
+import main.java.model.constants.SymptomType;
 import net.sf.clipsrules.jni.*;
 
 /**
@@ -12,12 +16,15 @@ public class SoeEnvironmentTest {
     public static void main(String[] args) {
         try {
             SoeEnvironment soe = new SoeEnvironment();
-            soe.reset();
-            soe.eval("(assert (Sintoma (Sensibilidad \"Calor\")))");
+
+            Symptom symptom = new Symptom("Frio", SymptomType.SENSITIVITY);
+            soe.assertSymptom(symptom);
+            RiskFactor riskFactor = new RiskFactor("Obesidad", RiskFactorType.DISEASE);
+            soe.assertRiskFactor(riskFactor);
             soe.run();
-            String evalStr = "(get-presuncion-list)";
-            MultifieldValue pv = (MultifieldValue) soe.eval(evalStr);
-            System.out.println(pv);
+
+            MultifieldValue pv = (MultifieldValue) soe.eval("(get-presuncion-list)");
+
             for (int i = 0; i < pv.size(); i++) {
                 FactAddressValue fv = (FactAddressValue) pv.get(i);
                 String trastorno = ((StringValue) fv.getFactSlot("PosibleTrastorno")).stringValue();
