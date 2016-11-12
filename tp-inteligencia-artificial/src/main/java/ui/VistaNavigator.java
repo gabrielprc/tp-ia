@@ -18,6 +18,7 @@ public class VistaNavigator {
     public static final String MAIN = "/main/java/ui/fxml/app.fxml";
     public static final String CREATE_PATIENT_VIEW = "/main/java/ui/fxml/createPatientView.fxml";
     public static final String CREATE_PREDICTION_VIEW = "/main/java/ui/fxml/createPredictionView.fxml";
+    public static final String DISPLAY_PREDICTIONS_VIEW = "/main/java/ui/fxml/displayPredictionView.fxml";
 
     /**
      * The main application layout controller.

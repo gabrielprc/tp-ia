@@ -2,20 +2,32 @@ package main.java.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import main.java.model.beans.Patient;
+import main.java.model.beans.Prediction;
+import main.java.model.clips.AppEnvironment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Controller class for the second vista.
  */
 public class CreatePredictionController {
 
+
+    private AppEnvironment env = new AppEnvironment();
 
     private List<String> symptoms = new ArrayList<String>();
 
@@ -66,8 +78,28 @@ public class CreatePredictionController {
 
         }
 
-        System.out.println(symptoms);
-        System.out.println(riskFactors);
+        env.assertSymptoms(symptoms);
+        env.assertRiskFactors(riskFactors);
+        env.run();
+        List<Prediction> predictions = env.getPredictions(new Patient());
+        openPredictionResultsWindow();
+    }
+
+    public void openPredictionResultsWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.DISPLAY_PREDICTIONS_VIEW));
+        DisplayPredictionController controller = loader.getController();
+        loader.setController(controller);
+        loader.setRoot(controller);
+        Parent root;
+        try {
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root, 800, 600);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DisplayPredictionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
