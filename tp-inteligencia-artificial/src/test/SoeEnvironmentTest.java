@@ -4,10 +4,9 @@ import main.java.model.beans.Patient;
 import main.java.model.beans.Prediction;
 import main.java.model.beans.RiskFactor;
 import main.java.model.beans.Symptom;
-import main.java.model.clips.SoeEnvironment;
+import main.java.model.clips.AppEnvironment;
 import main.java.model.constants.RiskFactorType;
 import main.java.model.constants.SymptomType;
-import net.sf.clipsrules.jni.*;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class SoeEnvironmentTest {
 
     public static void main(String[] args) {
         try {
-            SoeEnvironment soe = new SoeEnvironment();
+            AppEnvironment soe = new AppEnvironment();
             Symptom symptom = new Symptom("Frio", SymptomType.SENSITIVITY);
             soe.assertSymptom(symptom);
             soe.assertSymptom(new Symptom("Bruxismo", SymptomType.INFLAMATION));
