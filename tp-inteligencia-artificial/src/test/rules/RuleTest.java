@@ -7,7 +7,7 @@ import main.java.model.beans.Patient;
 import main.java.model.beans.Prediction;
 import main.java.model.beans.RiskFactor;
 import main.java.model.beans.Symptom;
-import main.java.model.clips.SoeEnvironment;
+import main.java.model.clips.AppEnvironment;
 
 public class RuleTest implements Runnable {
 
@@ -24,7 +24,7 @@ public class RuleTest implements Runnable {
 
 	@Override
 	public void run() {
-		SoeEnvironment env = new SoeEnvironment();
+		AppEnvironment env = new AppEnvironment();
 		
 		for (Symptom s : symptoms) {
 			env.assertSymptom(s);

@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by alvaro.daniel.calace on 11/12/2016.
  */
-public class SoeEnvironment extends Environment {
+public class AppEnvironment extends Environment {
 
-    public SoeEnvironment() {
+    public AppEnvironment() {
         super();
         super.loadFromResource("/main/clips/templates.clp");
         super.loadFromResource("/main/clips/rules.clp");
