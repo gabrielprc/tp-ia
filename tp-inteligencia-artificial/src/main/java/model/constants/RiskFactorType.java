@@ -1,6 +1,7 @@
 package main.java.model.constants;
 
 public enum RiskFactorType {
+	UNKNOWN(0, "Sin información"),
 	DISEASE(1, "Enfermedad"),
 	HABIT(2, "Habito");
 	

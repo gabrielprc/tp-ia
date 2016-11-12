@@ -1,6 +1,7 @@
 package main.java.model.constants;
 
 public enum AffectionType {
+	UNKNOWN(0, "Sin información"),
 	DENTAL(1, "Dental"),
 	PERIODONTAL(2, "Periodontal"),
 	TEMPOROMANDIBULAR(3, "Temporomandibular");

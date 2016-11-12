@@ -1,6 +1,7 @@
 package main.java.model.constants;
 
 public enum SymptomType {
+	UNKNOWN(0, "Sin información"),
 	SENSITIVITY(1, "Sensibilidad"),
 	PAIN(2, "Dolor"),
 	INFLAMATION(3, "Inflamacion"),
