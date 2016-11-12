@@ -1,44 +1,50 @@
 package main.java.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DaoQuery {
 
-	public final Long id;
-	public final String name;
-	public final Integer type;
+	public final List<Long> ids;
+	public final List<String> names;
+	public final List<Integer> types;
 	
-	private DaoQuery(Long id, String name, Integer type) {
+	private DaoQuery(List<Long> ids, List<String> names, List<Integer> types) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
+		this.ids = ids;
+		this.names = names;
+		this.types = types;
 	}
 	
 	public static class Builder {
-		private Long id;
-		private String name;
-		private Integer type;
+		private List<Long> ids;
+		private List<String> names;
+		private List<Integer> types;
 		
-		private Builder() {
+		public Builder() {
 			super();
+			this.ids = new ArrayList<Long>();
+			this.names = new ArrayList<String>();
+			this.types = new ArrayList<Integer>();
 		}
 		
 		public Builder id(Long id) {
-			this.id = id;
+			this.ids.add(id);
 			return this;
 		}
 		
 		public Builder name(String name) {
-			this.name = name;
+			this.names.add(name);
 			return this;
 		}
 		
 		public Builder type(Integer type) {
-			this.type = type;
+			this.types.add(type);
 			return this;
 		}
 		
 		public DaoQuery build() {
-			return new DaoQuery(this.id, this.name, this.type);
+			return new DaoQuery(this.ids, this.names, this.types);
 		}
 	}
 	
