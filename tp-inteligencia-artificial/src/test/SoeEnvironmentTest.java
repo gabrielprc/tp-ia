@@ -35,7 +35,7 @@ public class SoeEnvironmentTest {
                         prediction.getPatient().getName(),
                         prediction.getAffection().getName(),
                         prediction.getProbability().getLabel(),
-                        "{justification}"));
+                        prediction.getJustification()));
             }
         } catch (Throwable t) {
             System.out.println(t.getMessage());

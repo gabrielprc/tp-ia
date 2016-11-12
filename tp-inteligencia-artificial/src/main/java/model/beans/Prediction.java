@@ -26,13 +26,15 @@ public class Prediction extends BasicBean {
 	}
 	
 	public Prediction(Patient patient, Affection affection,
-			Probability probability) {
+			Probability probability, String justification) {
 		super();
 		this.patient = patient;
 		this.affection = affection;
 		this.probability = probability;
+		this.justification = justification;
 	}
-	
+
+	//TODO: add justification in this constructor
 	public Prediction(Long id, Patient patient, Affection affection,
 			Probability probability) {
 		super(id);
@@ -83,12 +85,14 @@ public class Prediction extends BasicBean {
 			probability
 		);
 	}
-	
+
+	//TODO: add justification here
 	public static Prediction fromView(PredictionView view) {
 		return new Prediction(
 			view.getPatient() != null ? Patient.fromView(view.getPatient()) : null,
 			view.getAffection() != null ? Affection.fromView(view.getAffection()) : null,
-			view.getProbability()
+			view.getProbability(),
+			""
 		);
 	}
 	

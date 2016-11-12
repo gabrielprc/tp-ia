@@ -40,8 +40,7 @@ public class SoeEnvironment extends Environment {
             Affection affection = new Affection(AffectionType.DENTAL, getStringFromSlot(fact, "PosibleTrastorno"));
             Probability probability = Probability.getByLabel(getStringFromSlot(fact, "Probabilidad"));
             String justification = getStringFromSlot(fact, "Justificacion");
-            //TODO: add justification
-            predictions.add(new Prediction(patient, affection, probability));
+            predictions.add(new Prediction(patient, affection, probability, justification));
         }
 
         return predictions;
