@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.MainController">
+   <left>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="56.0" />
+            <Label layoutX="40.0" layoutY="51.0" prefHeight="20.0" prefWidth="121.0" style="-fx-text-fill: white;" text="Menú de opciones">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="createPatientButton" layoutX="80.0" layoutY="85.0" onAction="#showCreatePatientView" text="Alta Paciente" />
+            <Hyperlink fx:id="diagnoseButton" layoutX="80.0" layoutY="116.0" onAction="#showDiagnoseView" text="Diagnósticos" />
+         </children></Pane>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <StackPane fx:id="vistaHolder" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>
