@@ -1,13 +1,19 @@
 package main.java.model.clips;
 
-import main.java.model.beans.*;
-import main.java.model.constants.AffectionType;
-import main.java.model.constants.Probability;
-import main.java.model.constants.SymptomType;
-import net.sf.clipsrules.jni.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import main.java.model.beans.Affection;
+import main.java.model.beans.Patient;
+import main.java.model.beans.Prediction;
+import main.java.model.beans.RiskFactor;
+import main.java.model.beans.Symptom;
+import main.java.model.constants.Probability;
+import net.sf.clipsrules.jni.Environment;
+import net.sf.clipsrules.jni.FactAddressValue;
+import net.sf.clipsrules.jni.MultifieldValue;
+import net.sf.clipsrules.jni.PrimitiveValue;
+import net.sf.clipsrules.jni.StringValue;
 
 /**
  * Created by alvaro.daniel.calace on 11/12/2016.
