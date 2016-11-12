@@ -1,190 +1,210 @@
 (defrule R1
     (Sintoma (Sensibilidad "Frio"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda")  (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Baja"))))
+    (bind ?j "Sensibilidad al Frio")
+    (assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda")  (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Baja") (Justificacion ?j))))
     
 (defrule R2
     (Sintoma (Sensibilidad "Calor"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja"))))
-    
+    (bind ?j "Sensibilidad al Calor")
+    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
+
 (defrule R3
     (Sintoma (Salud "Exceso de placa"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Muy Alta")))
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja"))))
-    
+    (bind ?j "Exceso de Placa")
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Muy Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
+
 (defrule R4
     (Sintoma (Inflamacion "Enrojecimiento de las encias"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Artritis de la Articulacion Temporomandibular") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Baja"))))
+    (bind ?j "Enrojecimiento de las Encias")
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Artritis de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R5
     (Sintoma (Inflamacion "Hinchazon de las encias"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Muy Alta")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Muy Alta")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Baja"))))
+    (bind ?j "Hinchazon de las Encias")
+    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Muy Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Muy Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R6
     (Sintoma (Dolor "Al morder"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Muy Alta")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Artritis de la Articulacion Temporomandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja"))))
+    (bind ?j "Dolor al Morder")
+    (assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Muy Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Artritis de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R7
     (Sintoma (Dolor "Sensacion de diente flojo"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja"))))
+    (bind ?j "_")
+    (assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R8
     (Sintoma (Inflamacion "Sangrado de encias"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Muy Alta")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja"))))
+    (bind ?j "Sangrado de Encias")
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Muy Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R9
     (Sintoma (Salud "Exceso de saliva"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja"))))
+    (bind ?j "Exceso de Saliva")
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R10
     (Sintoma (Salud "Mal aliento"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta")))
-    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja"))))
-	
-(defrule R11 
-	(Sintoma (Dolor "De cabeza"))
-	=> 
-	(assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Baja"))))
+    (bind ?j "Mal Aliento")
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
-(defrule R12 
+(defrule R11
+	(Sintoma (Dolor "De cabeza"))
+	=>
+	(bind ?j "Dolor de Cabeza")
+	(assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Baja") (Justificacion ?j))))
+
+(defrule R12
 	(Sintoma (Dolor "Al tragar"))
 	=>
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja")))
-	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Baja"))))
+    (bind ?j "Dolor al Tragar")
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
-(defrule R13 
+(defrule R13
 	(Sintoma (Dolor "En las articulaciones temporomandibulares"))
 	=>
-	(assert (Presuncion (PosibleTrastorno "Artritis de la Articulacion Temporomandibular") (Probabilidad "Muy Alta")))
-	(assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja")))	)
+	(bind ?j "Dolor en las Articulaciones Temporomandibulares")
+	(assert (Presuncion (PosibleTrastorno "Artritis de la Articulacion Temporomandibular") (Probabilidad "Muy Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja") (Justificacion ?j)))	)
 
-(defrule R14 
+(defrule R14
 	(Sintoma (Inflamacion "Bruxismo"))
-	=> 
-	(assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Alta")))
-	(assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Media")))
-	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja"))))
+	=>
+	(bind ?j "Bruxismo")
+	(assert (Presuncion (PosibleTrastorno "Dolor Miofascial") (Probabilidad "Alta") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Trastornos de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+	(assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R15
     (FactorDeRiesgo (Enfermedad "Defectos dentales"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Muy Alta")))
-    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja"))))
+    (bind ?j "Defectos Dentales")
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Muy Alta") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Pulpitis") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Anquilosis de la Articulacion Temporomandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hipoplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R16
     (FactorDeRiesgo (Habito "Dieta excesiva en carbohidratos y azucares"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja"))))
+    (bind ?j "Dieta Excesiva en Carbohidratos y Azucares")
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Fractura") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Hiperplasia Condilar Mandibular") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R17
     (FactorDeRiesgo (Enfermedad "Flujo salival reducido"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja"))))
+    (bind ?j "Flujo Salival Reducido")
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R18
     (FactorDeRiesgo (Habito "Fumar"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja"))))
+    (bind ?j "Fumador")
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Osteonecrosis de la Mandibula") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R19
     (FactorDeRiesgo (Enfermedad "Obesidad"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja"))))
+    (bind ?j "Obesidad")
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Dislocacion Mandibular") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Periodontitis") (Probabilidad "Baja") (Justificacion ?j))))
 
 (defrule R20
     (FactorDeRiesgo (Enfermedad "Diabetes"))
     =>
-    (assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Media")))
-    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja")))
-    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja"))))
+    (bind ?j "Diabetes")
+    (assert (Presuncion (PosibleTrastorno "Gingivitis") (Probabilidad "Media") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Caries") (Probabilidad "Baja") (Justificacion ?j)))
+    (assert (Presuncion (PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda") (Probabilidad "Baja") (Justificacion ?j))))
 

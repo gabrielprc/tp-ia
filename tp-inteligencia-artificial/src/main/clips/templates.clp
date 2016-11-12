@@ -71,4 +71,6 @@
 	(slot Probabilidad
 		(type STRING)
 		(allowed-strings "Muy Alta" "Alta" "Media" "Baja" "Sin Informacion")
-		(default "Sin Informacion")))
+		(default "Sin Informacion"))
+	(slot Justificacion
+	    (type STRING)))

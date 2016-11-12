@@ -29,7 +29,8 @@ public class SoeEnvironmentTest {
                 FactAddressValue fv = (FactAddressValue) pv.get(i);
                 String trastorno = ((StringValue) fv.getFactSlot("PosibleTrastorno")).stringValue();
                 String probabilidad = ((StringValue) fv.getFactSlot("Probabilidad")).stringValue();
-                System.out.println(trastorno + " - " + probabilidad);
+                String justificacion = ((StringValue) fv.getFactSlot("Justificacion")).stringValue();
+                System.out.println(trastorno + " - " + probabilidad + " - " + justificacion);
             }
         } catch (Throwable t) {
             System.out.println(t.getMessage());
