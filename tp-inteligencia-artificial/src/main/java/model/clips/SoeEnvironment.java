@@ -27,7 +27,13 @@ public class SoeEnvironment extends Environment {
 
     public List<PrimitiveValue> assertSymptoms(List<String> symptoms) {
         List<PrimitiveValue> values = new ArrayList<>();
-        symptoms.forEach(s -> this.assertSymptom(new Symptom(s, TypeMapper.getSymptomType(s))));
+        symptoms.forEach(s -> values.add(this.assertSymptom(new Symptom(s, TypeMapper.getSymptomType(s)))));
+        return values;
+    }
+
+    public List<PrimitiveValue> assertRiskFactors(List<String> riskFactors) {
+        List<PrimitiveValue> values = new ArrayList<>();
+        riskFactors.forEach(r -> values.add(this.assertRiskFactor(new RiskFactor(r, TypeMapper.getRiskFactorType(r)))));
         return values;
     }
 
