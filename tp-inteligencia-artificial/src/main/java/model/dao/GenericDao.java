@@ -7,6 +7,7 @@ import main.java.persistence.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 public abstract class GenericDao<T> {
@@ -44,16 +45,34 @@ public abstract class GenericDao<T> {
 	private List<T> list(Session session, Class clazz, DaoQuery query) {
 		Criteria criteria = session.createCriteria(clazz); 
 		if (query != null) {
-			if (query.name != null) {
-				criteria.add(Restrictions.like("name", "%" + query.name + "%"));
+			if (query.names != null && !query.names.isEmpty()) {
+				Criterion criterion = Restrictions.like("name", "%" + query.names.get(0) + "%");
+				
+				for (int i = 1; i < query.names.size(); i++) {
+					criterion = Restrictions.or(criterion, Restrictions.like("name", "%" + query.names.get(i) + "%"));
+				}
+				
+				criteria.add(criterion);
 			}
 			
-			if (query.id != null) {
-				criteria.add(Restrictions.eq("id", query.id));
+			if (query.ids != null && !query.ids.isEmpty()) {				
+				Criterion criterion = Restrictions.eq("id", query.ids.get(0));
+				
+				for (int i = 1; i < query.ids.size(); i++) {
+					criterion = Restrictions.or(criterion, Restrictions.eq("id", query.ids.get(i)));
+				}
+				
+				criteria.add(criterion);
 			}
 			
-			if (query.type != null) {
-				criteria.add(Restrictions.eq("type", query.type));
+			if (query.types != null && !query.ids.isEmpty()) {
+				Criterion criterion = Restrictions.eq("type", query.types.get(0));
+				
+				for (int i = 1; i < query.ids.size(); i++) {
+					criterion = Restrictions.or(criterion, Restrictions.eq("type", query.types.get(i)));
+				}
+				
+				criteria.add(criterion);
 			}
 		}
 		return (List<T>) criteria.list();
