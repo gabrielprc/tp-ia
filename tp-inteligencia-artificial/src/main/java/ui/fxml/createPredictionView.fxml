@@ -111,12 +111,12 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <CheckBox fx:id="sensibilidadCalorCheck" mnemonicParsing="false" text="Al calor">
+                        <CheckBox fx:id="sensibilidadCalorCheck" mnemonicParsing="false" text="Calor">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="sensibilidadFrioCheck" mnemonicParsing="false" text="Al frio">
+                        <CheckBox fx:id="sensibilidadFrioCheck" mnemonicParsing="false" text="Frio">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
