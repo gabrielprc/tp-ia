@@ -233,16 +233,6 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="habitoControlInadecuadoPlacaCheck" mnemonicParsing="false" text="Control inadecuado de la placa">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="habitoDietaCarenteVitaminaC" mnemonicParsing="false" text="Deficiencia de vitamina C">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </CheckBox>
                         <CheckBox fx:id="habitoFumarCheck" mnemonicParsing="false" text="Fumar">
                            <VBox.margin>
                               <Insets top="5.0" />

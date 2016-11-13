@@ -42,8 +42,6 @@ INSERT INTO risk_factors(type, name) VALUES
 	(1, 'Flujo salival reducido'),
 	(1, 'Obesidad'),
 	(1, 'Diabetes'),
-	(2, 'Control inadecuado de la placa'),
 	(2, 'Fumar'),
-	(2, 'Deficiencia de vitamina C'),
 	(2, 'Dieta excesiva en carbohidratos y azucares');
 	
