@@ -62,15 +62,54 @@ public class CreatePredictionController {
             patientsNames.add(p.getName());
             if (comboBox.getValue() == null) {
                 comboBox.setValue(p.getName());
+                patientsComboBoxChange(null);
             }
         }
         comboBox.setItems(patientsNames);
     }
 
     @FXML
-    public void predict(ActionEvent event) {
+    public void patientsComboBoxChange(ActionEvent event) {
+        Patient patient = getPatientFromComboBox();
+        if (patient == null) {
+            return;
+        }
+        checkByList(patient.getSymptoms(), sintomasHBox);
+        checkByList(patient.getRiskFactors(), factoresDeRiesgoHBox);
+    }
+
+    //@xdddd
+    private void checkByList(List<?> list, HBox hBox) {
+        hBox.getChildren().forEach(vBox ->{
+            ((VBox)vBox).getChildren().filtered(node -> node instanceof CheckBox).forEach(node -> {
+                CheckBox checkBox = (CheckBox)node;
+                checkBox.setSelected(list.stream().anyMatch(item -> {
+                    String name = "";
+                    try { name = (String)item.getClass().getMethod("getName").invoke(item); }
+                    catch (Exception e) { logger.warning("tried to call getName on invalid item"); }
+                    return name.equals(checkBox.getText());
+                }));
+            });
+        });
+    }
+
+    private Patient getPatientFromComboBox() {
         String patientName = comboBox.getValue();
-        if (patientName == null || patientName == "") {
+        if (patientName == null || patientName.equals("")) {
+            logger.warning("tried to get patient from combobox with empty string");
+            return null;
+        }
+        Patient patient = patientDao.getByName(patientName);
+        if (patient == null) {
+            logger.warning("returning null patient for name: " + patientName);
+        }
+        return patient;
+    }
+
+    @FXML
+    public void predict(ActionEvent event) {
+        Patient patient = getPatientFromComboBox();
+        if (patient == null) {
             return;
         }
 
@@ -97,8 +136,6 @@ public class CreatePredictionController {
                 }
             }
         }
-
-        Patient patient = patientDao.list(new DaoQuery.Builder().name(patientName).build()).get(0);
 
         List<Symptom> patientSymptoms = (new SymptomDao()).getByNames(symptoms);
         patient.setSymptoms(patientSymptoms);

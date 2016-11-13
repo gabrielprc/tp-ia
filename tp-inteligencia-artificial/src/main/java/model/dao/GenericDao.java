@@ -8,6 +8,7 @@ import main.java.persistence.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
@@ -81,7 +82,9 @@ public abstract class GenericDao<T> {
 	
 	private Object callWithSession(DaoCallable callable, Object... params) {
 		Session session = factory.openSession();
+        Transaction tran = session.beginTransaction();
 		Object res = callable.call(session, params);
+        tran.commit();
 		session.close();
 		return res;
 	}
@@ -105,6 +108,9 @@ public abstract class GenericDao<T> {
 	}
 
 	public T getByName(String name) {
+        if (name.equals("")) {
+            return null;
+        }
 		return list(new DaoQuery.Builder().name(name).build()).stream().findFirst().orElse(null);
 	}
 
