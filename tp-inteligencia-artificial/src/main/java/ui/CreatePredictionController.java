@@ -19,8 +19,7 @@ import main.java.model.beans.Prediction;
 import main.java.model.beans.RiskFactor;
 import main.java.model.beans.Symptom;
 import main.java.model.clips.AppEnvironment;
-import main.java.model.dao.DaoQuery;
-import main.java.model.dao.PatientDao;
+import main.java.model.dao.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,6 +64,10 @@ public class CreatePredictionController {
 
     @FXML
     public void predict(ActionEvent event) {
+        String patientName = comboBox.getValue();
+        if (patientName == null || patientName == "") {
+            return;
+        }
 
         for (int i = 0; i < sintomasHBox.getChildren().size(); i++) {
             VBox sintomas = (VBox) sintomasHBox.getChildren().get(i);
@@ -87,14 +90,17 @@ public class CreatePredictionController {
             }
         }
 
-        Patient patient = patientDao.list(new DaoQuery.Builder().name(comboBox.getValue()).build()).get(0);
-        patient.setSymptoms(symptoms.stream().map(s -> new Symptom(s)).collect(Collectors.toList()));
-        patient.setRiskFactors(riskFactors.stream().map(r -> new RiskFactor(r)).collect(Collectors.toList()));
+        Patient patient = patientDao.list(new DaoQuery.Builder().name(patientName).build()).get(0);
+
+        List<Symptom> patientSymptoms = (new SymptomDao()).getByNames(symptoms);
+        patient.setSymptoms(patientSymptoms);
+        List<RiskFactor> patientRiskFactors = (new RiskFactorDao()).getByNames(riskFactors);
+        patient.setRiskFactors(patientRiskFactors);
 
         patientDao.save(patient);
 
-        env.assertSymptoms(patient.getSymptoms());
-        env.assertRiskFactors(patient.getRiskFactors());
+        env.assertSymptoms(patientSymptoms);
+        env.assertRiskFactors(patientRiskFactors);
         env.run();
 
         openPredictionResultsWindow(env.getPredictions(patient));
