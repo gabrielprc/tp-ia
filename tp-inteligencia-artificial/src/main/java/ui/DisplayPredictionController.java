@@ -34,7 +34,7 @@ public class DisplayPredictionController implements Initializable{
 
         List<DisplayPredictionView> predictionViews = new ArrayList<DisplayPredictionView>();
 
-        textLabel.setText("El diagnóstico para el paciente:");
+        textLabel.setText("El diagnóstico para el paciente es:");
         patientLabel.setText(patient);
 
         for(Prediction p : predictions) {
@@ -61,14 +61,14 @@ public class DisplayPredictionController implements Initializable{
                     setStyle("");
                 } else {
                     if (item.getProbability().equals("Muy alta")) {
-                        setStyle("-fx-background-color: #c0392b");
+                        setStyle("-fx-background-color: #EF9A9A");
                     }
                     else if (item.getProbability().equals("Alta")) {
-                        setStyle("-fx-background-color: #d35400");
+                        setStyle("-fx-background-color: #FFCC80");
                     } else if (item.getProbability().equals("Media")) {
-                        setStyle("-fx-background-color: #f1c40f");
+                        setStyle("-fx-background-color: #FFF59D");
                     } else if (item.getProbability().equals("Baja")) {
-                        setStyle("-fx-background-color: #27ae60");
+                        setStyle("-fx-background-color: #C5E1A5");
                     }
                 }
             }

@@ -10,51 +10,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="predictionBorder" prefHeight="449.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.CreatePredictionController">
+<BorderPane fx:id="predictionBorder" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.CreatePredictionController">
    <bottom>
-      <VBox alignment="TOP_CENTER" prefHeight="97.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="640.0" style="-fx-padding: 20px;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ButtonPredict" alignment="TOP_CENTER" defaultButton="true" mnemonicParsing="false" onAction="#predict" text="Predict">
+            <Button fx:id="ButtonPredict" alignment="TOP_CENTER" defaultButton="true" mnemonicParsing="false" onAction="#predict" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #EF5350; -fx-padding: 10px;" text="Analizar" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <font>
+                  <Font size="18.0" />
+               </font>
             </Button>
          </children>
       </VBox>
    </bottom>
-   <top>
-      <VBox alignment="CENTER" prefHeight="24.0" spacing="10.0" BorderPane.alignment="BOTTOM_CENTER">
-         <children>
-            <Label fx:id="PredictionTitle" alignment="TOP_CENTER" contentDisplay="CENTER" text="Prediccion de Trastornos" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Black" size="18.0" />
-               </font>
-            </Label>
-         </children>
-         <padding>
-            <Insets bottom="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20px;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
-               <children>
-                  <Label text="Seleccionar el paciente">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Elegir paciente" />
-               </children>
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin>
-            </HBox>
-            <Label alignment="CENTER" text="Síntomas" underline="true">
+            <Label alignment="CENTER" text="Síntomas">
                <font>
-                  <Font size="22.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
             <HBox fx:id="sintomasHBox" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
@@ -63,7 +39,7 @@
                      <children>
                         <Label alignment="TOP_CENTER" text="Dolor">
                            <font>
-                              <Font name="Arial Bold Italic" size="13.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -73,26 +49,41 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="dolorArticulacionesCheck" mnemonicParsing="false" text="En las articulaciones temporomandibulares">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="dolorCabezaCheck" mnemonicParsing="false" text="De cabeza">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="dolorMorderCheck" mnemonicParsing="false" text="Al morder">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="dolorTragarCheck" mnemonicParsing="false" text="Al tragar">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
@@ -100,7 +91,7 @@
                      <children>
                         <Label alignment="TOP_CENTER" text="Sensibilidad">
                            <font>
-                              <Font name="Arial Bold Italic" size="13.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -110,11 +101,17 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="sensibilidadFrioCheck" mnemonicParsing="false" text="Frio">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
@@ -122,7 +119,7 @@
                      <children>
                         <Label alignment="TOP_CENTER" text="Inflamacion">
                            <font>
-                              <Font name="Arial Bold Italic" size="13.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -132,21 +129,33 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="inflamacionHinchazonEnciasCheck" mnemonicParsing="false" text="Hinchazon de las encias">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="inflamacionSangradoEnciasCheck" mnemonicParsing="false" text="Sangrado de encias">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="inflamacionBruxismoCheck" mnemonicParsing="false" text="Bruxismo">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
@@ -154,7 +163,7 @@
                      <children>
                         <Label alignment="TOP_CENTER" text="Salud">
                            <font>
-                              <Font name="Arial Bold Italic" size="13.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -164,25 +173,37 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="saludExcesoPlacaCheck" mnemonicParsing="false" text="Exceso de placa">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="saludMalAlientoCheck" mnemonicParsing="false" text="Mal aliento">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Label text="Factores de Riesgo" underline="true">
+            <Label text="Factores de Riesgo">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
             </Label>
             <HBox fx:id="factoresDeRiesgoHBox" prefHeight="100.0" prefWidth="200.0" spacing="45.0">
                <children>
@@ -190,7 +211,7 @@
                      <children>
                         <Label alignment="TOP_CENTER" text="Enfermedades">
                            <font>
-                              <Font name="Arial Bold Italic" size="13.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -200,21 +221,33 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="enfermedadDefectoDentalCheck" mnemonicParsing="false" text="Defectos dentales">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="enfermedadObesidadCheck" mnemonicParsing="false" text="Obesidad">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="enfermedadDiabetesCheck" layoutX="10.0" layoutY="92.0" mnemonicParsing="false" text="Diabetes">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
@@ -222,7 +255,7 @@
                      <children>
                         <Label alignment="TOP_CENTER" text="Habitos">
                            <font>
-                              <Font name="Arial Bold Italic" size="13.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -232,11 +265,17 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                         <CheckBox fx:id="habitoFumarCheck" mnemonicParsing="false" text="Fumar">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
@@ -245,4 +284,16 @@
          </children>
       </VBox>
    </center>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="640.0" spacing="10.0" style="-fx-background-color: #0288D1; -fx-padding: 20px;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Síntomas del paciente" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Elegir paciente" style="-fx-padding: 3px; -fx-background-color: #29B6F6; -fx-border-radius: 4px; -fx-border-width: 1px; -fx-color: white;" />
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

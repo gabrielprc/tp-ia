@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FAFAFA;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.MainController">
    <left>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="600.0" prefWidth="145.0" style="-fx-background-color: #0288D1;" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutX="56.0" />
-            <Label layoutX="40.0" layoutY="51.0" prefHeight="20.0" prefWidth="121.0" style="-fx-text-fill: white;" text="Menú de opciones">
+            <Hyperlink fx:id="createPatientButton" layoutX="-3.0" layoutY="77.0" onAction="#showCreatePatientView" prefHeight="50.0" prefWidth="148.0" style="-fx-font-weight: 600; -fx-font-size: 16px;" text="  Alta Paciente" textFill="WHITE">
                <font>
                   <Font size="14.0" />
-               </font>
-            </Label>
-            <Hyperlink fx:id="createPatientButton" layoutX="80.0" layoutY="85.0" onAction="#showCreatePatientView" text="Alta Paciente" />
-            <Hyperlink fx:id="diagnoseButton" layoutX="80.0" layoutY="116.0" onAction="#showDiagnoseView" text="Diagnósticos" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="diagnoseButton" layoutX="-3.0" layoutY="127.0" onAction="#showDiagnoseView" prefHeight="50.0" prefWidth="148.0" style="-fx-font-weight: 600; -fx-font-size: 16px;" text="  Diagnósticos" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Hyperlink>
+            <Pane layoutX="3.0" prefHeight="68.0" prefWidth="140.0" style="-fx-background-color: #0288D1;">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="40.0" layoutY="4.0">
+                     <image>
+                        <Image url="/main/java/ui/fxml/tooth.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children></Pane>
    </left>
    <center>
