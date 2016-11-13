@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -37,47 +38,34 @@ public class CreatePredictionController {
     private HBox sintomasHBox, factoresDeRiesgoHBox;
 
     @FXML
-    private VBox dolorVBox, habitosVBox, inflamacionVBox;
-
-    @FXML
-    private VBox enfermedadesVBox, saludVBox, sensibilidadVBox;
-
-    @FXML
     private Button ButtonPredict;
+
+    @FXML
+    private ComboBox<String> comboBox;
 
     @FXML
     public void predict(ActionEvent event) {
 
         for (int i = 0; i < sintomasHBox.getChildren().size(); i++) {
-
             VBox sintomas = (VBox) sintomasHBox.getChildren().get(i);
-
             for (int j = 0; j < sintomas.getChildren().size(); j++) {
-
                 Node checkBox = sintomas.getChildren().get(j);
                 if (checkBox instanceof CheckBox) {
                     CheckBox cb = (CheckBox) checkBox;
                     if (cb.isSelected()) symptoms.add(cb.getText());
                 }
             }
-
         }
-
         for (int l = 0; l < factoresDeRiesgoHBox.getChildren().size(); l++) {
-
             VBox riskFactor = (VBox) factoresDeRiesgoHBox.getChildren().get(l);
-
             for (int m = 0; m < riskFactor.getChildren().size(); m++) {
-
                 Node checkBox = riskFactor.getChildren().get(m);
                 if (checkBox instanceof CheckBox) {
                     CheckBox cb = (CheckBox) checkBox;
                     if (cb.isSelected()) riskFactors.add(cb.getText());
                 }
             }
-
         }
-
         env.assertSymptoms(symptoms);
         env.assertRiskFactors(riskFactors);
         env.run();

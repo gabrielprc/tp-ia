@@ -6,6 +6,9 @@ import javafx.scene.control.TableView;
 public class DisplayPredictionController {
 
     @FXML
-    private TableView<?> resultTable;
+    private TableView<String> resultTable;
 
+    @FXML
+    private void initialize() {
+    }
 }
