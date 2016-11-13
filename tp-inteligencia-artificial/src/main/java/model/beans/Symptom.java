@@ -22,10 +22,6 @@ public class Symptom extends BasicBean {
 		super();
 	}
 
-	public Symptom(String name) {
-		this(name, TypeMapper.getSymptomType(name));
-	}
-
 	public Symptom(String name, SymptomType type) {
 		super();
 		this.name = name;

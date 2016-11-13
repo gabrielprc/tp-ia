@@ -102,12 +102,15 @@ public abstract class GenericDao<T> {
 		}
 		return 1;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	public T getByName(String name) {
+		return list(new DaoQuery.Builder().name(name).build()).stream().findFirst().orElse(null);
+	}
+
+	public List<T> getByNames(List<String> names) {
+		DaoQuery.Builder builder = new DaoQuery.Builder();
+		names.forEach(builder::name);
+		return list(builder.build());
+	}
 	
 }
