@@ -1,5 +1,7 @@
 package main.java.ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.stage.Stage;
 import main.java.model.beans.Patient;
 import main.java.model.beans.Prediction;
 import main.java.model.clips.AppEnvironment;
+import main.java.model.dao.PatientDao;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +26,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreatePredictionController {
-
 
     private AppEnvironment env = new AppEnvironment();
 
@@ -39,6 +41,20 @@ public class CreatePredictionController {
 
     @FXML
     private ComboBox<String> comboBox;
+
+    @FXML
+    private void initialize() {
+
+        PatientDao patientDao = new PatientDao();
+        List<Patient> patients = patientDao.list();
+        ObservableList<String> patientsNames =
+                FXCollections.observableArrayList();
+
+        for (Patient p : patients) {
+            patientsNames.add(p.getName());
+        }
+        comboBox.setItems(patientsNames);
+    }
 
     @FXML
     public void predict(ActionEvent event) {
@@ -67,12 +83,12 @@ public class CreatePredictionController {
         env.assertRiskFactors(riskFactors);
         env.run();
         List<Prediction> predictions = env.getPredictions(new Patient());
-        openPredictionResultsWindow();
+        openPredictionResultsWindow(predictions);
     }
 
-    public void openPredictionResultsWindow() {
+    public void openPredictionResultsWindow(List<Prediction> predictions) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.DISPLAY_PREDICTIONS_VIEW));
-        DisplayPredictionController controller = loader.getController();
+        DisplayPredictionController controller = (DisplayPredictionController) loader.getController();
         loader.setController(controller);
         loader.setRoot(controller);
         Parent root;

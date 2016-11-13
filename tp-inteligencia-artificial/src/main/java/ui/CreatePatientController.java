@@ -2,7 +2,6 @@ package main.java.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.stage.Popup;
 import main.java.model.beans.Patient;
 import main.java.model.dao.PatientDao;
 
