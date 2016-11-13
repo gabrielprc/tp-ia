@@ -1,10 +1,8 @@
 package main.java.ui;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-/**
- * Controller class for the first vista.
- */
 public class CreatePatientController {
 
     @FXML

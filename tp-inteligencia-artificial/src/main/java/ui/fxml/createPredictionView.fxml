@@ -5,13 +5,12 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="predictionBorder" prefHeight="449.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.CreatePredictionController">
+<BorderPane fx:id="predictionBorder" prefHeight="449.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.CreatePredictionController">
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="97.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,19 +23,17 @@
       </VBox>
    </bottom>
    <top>
-      <VBox alignment="TOP_CENTER" prefHeight="24.0" BorderPane.alignment="BOTTOM_CENTER">
+      <VBox alignment="CENTER" prefHeight="24.0" spacing="10.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <Label fx:id="PredictionTitle" alignment="TOP_CENTER" contentDisplay="CENTER" text="Prediccion de Trastornos" textAlignment="CENTER">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <Separator>
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Separator>
          </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
       </VBox>
    </top>
    <center>
