@@ -46,8 +46,10 @@ public class AppEnvironment extends Environment {
 
         for (int i = 0; i < facts.size(); i++) {
             FactAddressValue fact = (FactAddressValue) facts.get(i);
-            String affectionName = getStringFromSlot(fact, "PosibleTrastorno");
-            Affection affection = new Affection(affectionName);
+            Affection affection = Affection.fromName(getStringFromSlot(fact, "PosibleTrastorno"));
+            if (affection == null) {
+                continue;
+            }
             Probability probability = Probability.getByLabel(getStringFromSlot(fact, "Probabilidad"));
             String justification = getStringFromSlot(fact, "Justificacion");
             predictions.add(new Prediction(patient, affection, probability, justification));
