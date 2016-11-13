@@ -8,7 +8,4 @@ public class DisplayPredictionController {
     @FXML
     private TableView<String> resultTable;
 
-    @FXML
-    private void initialize() {
-    }
 }

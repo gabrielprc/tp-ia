@@ -2,6 +2,9 @@ package main.java.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.Popup;
+import main.java.model.beans.Patient;
+import main.java.model.dao.PatientDao;
 
 public class CreatePatientController {
 
@@ -9,7 +12,11 @@ public class CreatePatientController {
     private TextField name;
 
     public void createPatient() {
-        System.out.println(name.getText());
+        PatientDao patientDao = new PatientDao();
+        Patient patient = new Patient();
+        patient.setName(name.getText());
+        patientDao.save(patient);
+        name.setText("");
     }
 
 }
