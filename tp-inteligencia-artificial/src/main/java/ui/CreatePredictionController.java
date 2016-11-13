@@ -31,6 +31,8 @@ import java.util.stream.Stream;
 
 public class CreatePredictionController {
 
+    private static final Logger logger = Logger.getLogger(CreatePredictionController.class.getName());
+
     private AppEnvironment env = new AppEnvironment();
 
     private List<String> symptoms = new ArrayList<String>();
@@ -58,6 +60,9 @@ public class CreatePredictionController {
 
         for (Patient p : patients) {
             patientsNames.add(p.getName());
+            if (comboBox.getValue() == null) {
+                comboBox.setValue(p.getName());
+            }
         }
         comboBox.setItems(patientsNames);
     }
@@ -68,6 +73,9 @@ public class CreatePredictionController {
         if (patientName == null || patientName == "") {
             return;
         }
+
+        symptoms.clear();
+        riskFactors.clear();
 
         for (int i = 0; i < sintomasHBox.getChildren().size(); i++) {
             VBox sintomas = (VBox) sintomasHBox.getChildren().get(i);
@@ -94,11 +102,19 @@ public class CreatePredictionController {
 
         List<Symptom> patientSymptoms = (new SymptomDao()).getByNames(symptoms);
         patient.setSymptoms(patientSymptoms);
+        if (symptoms.size() != patientSymptoms.size()) {
+            logger.warning("symptoms from db do not match symptoms from view");
+        }
+
         List<RiskFactor> patientRiskFactors = (new RiskFactorDao()).getByNames(riskFactors);
         patient.setRiskFactors(patientRiskFactors);
+        if (riskFactors.size() != patientRiskFactors.size()) {
+            logger.warning("riskfactors from db do not match riskfactors from view");
+        }
 
         patientDao.save(patient);
 
+        env.reset();
         env.assertSymptoms(patientSymptoms);
         env.assertRiskFactors(patientRiskFactors);
         env.run();

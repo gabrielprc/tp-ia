@@ -6,11 +6,14 @@ import net.sf.clipsrules.jni.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by alvaro.daniel.calace on 11/12/2016.
  */
 public class AppEnvironment extends Environment {
+
+    private final static Logger logger = Logger.getLogger(AppEnvironment.class.getName());
 
     public AppEnvironment() {
         super();
@@ -46,8 +49,10 @@ public class AppEnvironment extends Environment {
 
         for (int i = 0; i < facts.size(); i++) {
             FactAddressValue fact = (FactAddressValue) facts.get(i);
-            Affection affection = Affection.fromName(getStringFromSlot(fact, "PosibleTrastorno"));
+            String affectionName = getStringFromSlot(fact, "PosibleTrastorno");
+            Affection affection = Affection.fromName(affectionName);
             if (affection == null) {
+                logger.warning("affection " + affectionName + " not found in db");
                 continue;
             }
             Probability probability = Probability.getByLabel(getStringFromSlot(fact, "Probabilidad"));

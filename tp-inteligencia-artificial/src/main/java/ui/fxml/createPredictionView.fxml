@@ -74,12 +74,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="dolorTemporomandibularesCheck" mnemonicParsing="false" text="Temporomandibulares">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="dolorArticulacionesCheck" mnemonicParsing="false" text="En las articulaciones">
+                        <CheckBox fx:id="dolorArticulacionesCheck" mnemonicParsing="false" text="En las articulaciones temporomandibulares">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
@@ -233,19 +228,9 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <CheckBox fx:id="habitoDietaExcesivaCarbohidratosAzucaresCheck" mnemonicParsing="false" text="Exceso de carbohidratos y azucar">
+                        <CheckBox fx:id="habitoDietaExcesivaCarbohidratosAzucaresCheck" mnemonicParsing="false" text="Dieta excesiva en carbohidratos y azucares">
                            <VBox.margin>
                               <Insets top="10.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="habitoControlInadecuadoPlacaCheck" mnemonicParsing="false" text="Control inadecuado de placa">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="habitoDietaCarenteVitaminaC" mnemonicParsing="false" text="Dieta carente de vitamina C">
-                           <VBox.margin>
-                              <Insets top="5.0" />
                            </VBox.margin>
                         </CheckBox>
                         <CheckBox fx:id="habitoFumarCheck" mnemonicParsing="false" text="Fumar">

@@ -1,4 +1,5 @@
 # AFFECTIONS
+DELETE FROM affections WHERE id != -1 LIMIT 1000;
 INSERT INTO affections(name, type) VALUES
 	('Caries', 1),
 	('Pulpitis', 1),
@@ -14,9 +15,10 @@ INSERT INTO affections(name, type) VALUES
 	('Hipoplasia Condilar Mandibular', 3),
 	('Dolor Miofascial', 3),
 	('Trastornos de la Articulacion Temporomandibular', 3);
-	
-	
+
+
 # SYMPTOMS
+DELETE FROM symptoms WHERE id != -1 LIMIT 1000;
 INSERT INTO symptoms(type, name) VALUES
 	(1, 'Frio'),
 	(1, 'Calor'),
@@ -32,15 +34,14 @@ INSERT INTO symptoms(type, name) VALUES
 	(4, 'Mal aliento'),
 	(4, 'Exceso de placa'),
 	(4, 'Exceso de saliva');
-	
+
 # RISK FACTORS
+DELETE FROM risk_factors WHERE id != -1 LIMIT 1000;
 INSERT INTO risk_factors(type, name) VALUES
 	(1, 'Defectos dentales'),
 	(1, 'Flujo salival reducido'),
 	(1, 'Obesidad'),
 	(1, 'Diabetes'),
-	(2, 'Control inadecuado de la placa'),
 	(2, 'Fumar'),
-	(2, 'Deficiencia de vitamina C'),
 	(2, 'Dieta excesiva en carbohidratos y azucares');
 	
