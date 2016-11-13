@@ -4,10 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import main.java.model.beans.Prediction;
 import main.java.model.views.DisplayPredictionView;
 
@@ -46,16 +45,34 @@ public class DisplayPredictionController implements Initializable{
             );
         }
 
-
         affectionColumn.setCellValueFactory(new PropertyValueFactory<>("affection"));
         probabilityColumn.setCellValueFactory(new PropertyValueFactory<>("probability"));
         justificationColumn.setCellValueFactory(new PropertyValueFactory<>("justification"));
-
 
         ObservableList<DisplayPredictionView> data =
                 FXCollections.observableArrayList(predictionViews);
 
         resultTable.setItems(data);
+
+        resultTable.setRowFactory(row -> new TableRow<DisplayPredictionView>(){
+            public void updateItem(DisplayPredictionView item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setStyle("");
+                } else {
+                    if (item.getProbability().equals("Muy alta")) {
+                        setStyle("-fx-background-color: #c0392b");
+                    }
+                    else if (item.getProbability().equals("Alta")) {
+                        setStyle("-fx-background-color: #d35400");
+                    } else if (item.getProbability().equals("Media")) {
+                        setStyle("-fx-background-color: #f1c40f");
+                    } else if (item.getProbability().equals("Baja")) {
+                        setStyle("-fx-background-color: #27ae60");
+                    }
+                }
+            }
+        });
     }
 }
 
