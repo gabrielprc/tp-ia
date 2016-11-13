@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -10,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="predictionBorder" prefHeight="449.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.CreatePredictionController">
+<BorderPane fx:id="predictionBorder" prefHeight="449.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ui.CreatePredictionController">
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="97.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
@@ -46,7 +51,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Elegir paciente" />
+                  <ComboBox fx:id="comboBox" onAction="#patientsComboBoxChange" prefWidth="150.0" promptText="Elegir paciente" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" />
