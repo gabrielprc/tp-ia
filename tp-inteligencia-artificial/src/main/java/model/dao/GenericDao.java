@@ -1,5 +1,6 @@
 package main.java.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.persistence.HibernateUtil;
@@ -108,6 +109,9 @@ public abstract class GenericDao<T> {
 	}
 
 	public List<T> getByNames(List<String> names) {
+        if (names.isEmpty()) {
+            return new ArrayList<>();
+        }
 		DaoQuery.Builder builder = new DaoQuery.Builder();
 		names.forEach(builder::name);
 		return list(builder.build());

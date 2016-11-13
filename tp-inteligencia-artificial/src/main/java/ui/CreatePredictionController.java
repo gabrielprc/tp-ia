@@ -60,6 +60,9 @@ public class CreatePredictionController {
 
         for (Patient p : patients) {
             patientsNames.add(p.getName());
+            if (comboBox.getValue() == null) {
+                comboBox.setValue(p.getName());
+            }
         }
         comboBox.setItems(patientsNames);
     }
@@ -70,6 +73,9 @@ public class CreatePredictionController {
         if (patientName == null || patientName == "") {
             return;
         }
+
+        symptoms.clear();
+        riskFactors.clear();
 
         for (int i = 0; i < sintomasHBox.getChildren().size(); i++) {
             VBox sintomas = (VBox) sintomasHBox.getChildren().get(i);
