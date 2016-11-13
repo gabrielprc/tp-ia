@@ -1,17 +1,13 @@
-package main.java.model.clips;
+package main.java.model.beans;
 
-import main.java.model.beans.Affection;
-import main.java.model.beans.Symptom;
 import main.java.model.constants.AffectionType;
 import main.java.model.constants.RiskFactorType;
 import main.java.model.constants.SymptomType;
 import main.java.model.dao.AffectionDao;
-import main.java.model.dao.GenericDao;
 import main.java.model.dao.RiskFactorDao;
 import main.java.model.dao.SymptomDao;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by alvaro.daniel.calace on 11/12/2016.

@@ -20,6 +20,10 @@ public class Affection extends BasicBean {
 	public Affection() {
 		super();
 	}
+
+	public Affection(String name) {
+		this(TypeMapper.getAffectionType(name), name);
+	}
 	
 	public Affection(AffectionType type, String name) {
 		super();

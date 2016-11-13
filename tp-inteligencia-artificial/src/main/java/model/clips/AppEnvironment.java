@@ -1,9 +1,7 @@
 package main.java.model.clips;
 
 import main.java.model.beans.*;
-import main.java.model.constants.AffectionType;
 import main.java.model.constants.Probability;
-import main.java.model.constants.SymptomType;
 import net.sf.clipsrules.jni.*;
 
 import java.util.ArrayList;
@@ -25,15 +23,15 @@ public class AppEnvironment extends Environment {
         return super.assertString(String.format("(Sintoma (%s \"%s\"))", symptom.getType().label, symptom.getName()));
     }
 
-    public List<PrimitiveValue> assertSymptoms(List<String> symptoms) {
+    public List<PrimitiveValue> assertSymptoms(List<Symptom> symptoms) {
         List<PrimitiveValue> values = new ArrayList<>();
-        symptoms.forEach(s -> values.add(this.assertSymptom(new Symptom(s, TypeMapper.getSymptomType(s)))));
+        symptoms.forEach(s -> values.add(this.assertSymptom(s)));
         return values;
     }
 
-    public List<PrimitiveValue> assertRiskFactors(List<String> riskFactors) {
+    public List<PrimitiveValue> assertRiskFactors(List<RiskFactor> riskFactors) {
         List<PrimitiveValue> values = new ArrayList<>();
-        riskFactors.forEach(r -> values.add(this.assertRiskFactor(new RiskFactor(r, TypeMapper.getRiskFactorType(r)))));
+        riskFactors.forEach(r -> values.add(this.assertRiskFactor(r)));
         return values;
     }
 
@@ -49,7 +47,7 @@ public class AppEnvironment extends Environment {
         for (int i = 0; i < facts.size(); i++) {
             FactAddressValue fact = (FactAddressValue) facts.get(i);
             String affectionName = getStringFromSlot(fact, "PosibleTrastorno");
-            Affection affection = new Affection(TypeMapper.getAffectionType(affectionName), affectionName);
+            Affection affection = new Affection(affectionName);
             Probability probability = Probability.getByLabel(getStringFromSlot(fact, "Probabilidad"));
             String justification = getStringFromSlot(fact, "Justificacion");
             predictions.add(new Prediction(patient, affection, probability, justification));
