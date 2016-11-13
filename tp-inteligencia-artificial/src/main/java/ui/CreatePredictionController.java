@@ -108,15 +108,18 @@ public class CreatePredictionController {
 
     public void openPredictionResultsWindow(List<Prediction> predictions) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(VistaNavigator.DISPLAY_PREDICTIONS_VIEW));
-        DisplayPredictionController controller = (DisplayPredictionController) loader.getController();
-        loader.setController(controller);
-        loader.setRoot(controller);
+
         Parent root;
         try {
             root = (Parent) loader.load();
             Scene scene = new Scene(root, 800, 600);
             Stage stage = new Stage();
             stage.setScene(scene);
+            DisplayPredictionController controller = loader.getController();
+            loader.setController(controller);
+            loader.setRoot(controller);
+            controller.initData(comboBox.getSelectionModel().getSelectedItem(), predictions);
+
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(DisplayPredictionController.class.getName()).log(Level.SEVERE, null, ex);
