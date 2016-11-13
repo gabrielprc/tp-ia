@@ -31,6 +31,8 @@ import java.util.stream.Stream;
 
 public class CreatePredictionController {
 
+    private static final Logger logger = Logger.getLogger(CreatePredictionController.class.getName());
+
     private AppEnvironment env = new AppEnvironment();
 
     private List<String> symptoms = new ArrayList<String>();
@@ -94,11 +96,19 @@ public class CreatePredictionController {
 
         List<Symptom> patientSymptoms = (new SymptomDao()).getByNames(symptoms);
         patient.setSymptoms(patientSymptoms);
+        if (symptoms.size() != patientSymptoms.size()) {
+            logger.warning("symptoms from db do not match symptoms from view");
+        }
+
         List<RiskFactor> patientRiskFactors = (new RiskFactorDao()).getByNames(riskFactors);
         patient.setRiskFactors(patientRiskFactors);
+        if (riskFactors.size() != patientRiskFactors.size()) {
+            logger.warning("riskfactors from db do not match riskfactors from view");
+        }
 
         patientDao.save(patient);
 
+        env.reset();
         env.assertSymptoms(patientSymptoms);
         env.assertRiskFactors(patientRiskFactors);
         env.run();
