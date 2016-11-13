@@ -16,7 +16,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.model.beans.Patient;
 import main.java.model.beans.Prediction;
+import main.java.model.beans.RiskFactor;
+import main.java.model.beans.Symptom;
 import main.java.model.clips.AppEnvironment;
+import main.java.model.dao.DaoQuery;
 import main.java.model.dao.PatientDao;
 
 import java.io.IOException;
@@ -24,6 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CreatePredictionController {
 
@@ -32,6 +37,8 @@ public class CreatePredictionController {
     private List<String> symptoms = new ArrayList<String>();
 
     private List<String> riskFactors = new ArrayList<String>();
+
+    private PatientDao patientDao;
 
     @FXML
     private HBox sintomasHBox, factoresDeRiesgoHBox;
@@ -45,7 +52,7 @@ public class CreatePredictionController {
     @FXML
     private void initialize() {
 
-        PatientDao patientDao = new PatientDao();
+        patientDao = new PatientDao();
         List<Patient> patients = patientDao.list();
         ObservableList<String> patientsNames =
                 FXCollections.observableArrayList();
@@ -79,11 +86,18 @@ public class CreatePredictionController {
                 }
             }
         }
-        env.assertSymptoms(symptoms);
-        env.assertRiskFactors(riskFactors);
+
+        Patient patient = patientDao.list(new DaoQuery.Builder().name(comboBox.getValue()).build()).get(0);
+        patient.setSymptoms(symptoms.stream().map(s -> new Symptom(s)).collect(Collectors.toList()));
+        patient.setRiskFactors(riskFactors.stream().map(r -> new RiskFactor(r)).collect(Collectors.toList()));
+
+        patientDao.save(patient);
+
+        env.assertSymptoms(patient.getSymptoms());
+        env.assertRiskFactors(patient.getRiskFactors());
         env.run();
-        List<Prediction> predictions = env.getPredictions(new Patient());
-        openPredictionResultsWindow(predictions);
+
+        openPredictionResultsWindow(env.getPredictions(patient));
     }
 
     public void openPredictionResultsWindow(List<Prediction> predictions) {
