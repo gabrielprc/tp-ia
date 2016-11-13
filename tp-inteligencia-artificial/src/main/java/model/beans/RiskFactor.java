@@ -20,10 +20,6 @@ public class RiskFactor extends BasicBean {
 		super();
 	}
 
-	public RiskFactor(String name) {
-		this(name, TypeMapper.getRiskFactorType(name));
-	}
-
 	public RiskFactor(String name, RiskFactorType type) {
 		super();
 		this.name = name;

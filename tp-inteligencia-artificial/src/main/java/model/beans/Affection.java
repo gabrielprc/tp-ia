@@ -1,12 +1,13 @@
 package main.java.model.beans;
 
+import main.java.model.constants.AffectionType;
+import main.java.model.dao.AffectionDao;
+import main.java.model.views.AffectionView;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import main.java.model.constants.AffectionType;
-import main.java.model.views.AffectionView;
 
 @Entity
 @Table(name = "affections")
@@ -21,10 +22,6 @@ public class Affection extends BasicBean {
 		super();
 	}
 
-	public Affection(String name) {
-		this(TypeMapper.getAffectionType(name), name);
-	}
-	
 	public Affection(AffectionType type, String name) {
 		super();
 		this.type = type;
@@ -79,5 +76,8 @@ public class Affection extends BasicBean {
 	public static Affection fromView(AffectionView view) {
 		return new Affection(view.getType(), view.getName());
 	}
-	
+
+	public static Affection fromName(String name) {
+		return (new AffectionDao()).getByName(name);
+	}
 }
