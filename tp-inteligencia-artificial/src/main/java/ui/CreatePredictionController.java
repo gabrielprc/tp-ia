@@ -70,7 +70,11 @@ public class CreatePredictionController {
     @FXML
     public void predict(ActionEvent event) {
         String patientName = comboBox.getValue();
-        if (patientName == null || patientName == "") {
+        if (patientName == null || patientName.equals("")) {
+            return;
+        }
+        Patient patient = patientDao.getByName(patientName);
+        if (patient == null) {
             return;
         }
 
@@ -97,8 +101,6 @@ public class CreatePredictionController {
                 }
             }
         }
-
-        Patient patient = patientDao.list(new DaoQuery.Builder().name(patientName).build()).get(0);
 
         List<Symptom> patientSymptoms = (new SymptomDao()).getByNames(symptoms);
         patient.setSymptoms(patientSymptoms);
