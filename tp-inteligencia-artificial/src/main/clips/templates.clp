@@ -54,9 +54,7 @@
     (slot Habito
         (type STRING) (allowed-strings
                             "Sin Informacion"
-                            "Control inadecuado de la placa" 
-                            "Fumar" 
-                            "Deficiencia de vitamina C" 
+                            "Fumar"
                             "Dieta excesiva en carbohidratos y azucares")
                       (default "Sin Informacion")
     )
