@@ -1,3 +1,140 @@
+(defrule R21
+	(or
+		(Sintoma (Sensibilidad "Frio"))
+        	(Sintoma (Sensibilidad "Calor"))
+	)
+	(or
+		(FactorDeRiesgo (Habito "Dieta excesiva en carbohidratos y azucares"))
+		(FactorDeRiesgo (Enfermedad "Flujo salival reducido"))
+		(FactorDeRiesgo (Enfermedad "Defectos dentales"))
+		(FactorDeRiesgo (Habito "Control inadecuado de la placa"))
+	)
+	=>
+	(assert
+        	(Presuncion
+			(PosibleTrastorno "Caries")
+		        (Probabilidad "Muy Alta")
+        		(Justificacion "Sensbilidad al frio o al calor, enfermedades dentales y malos habitos alimenticios")
+		)
+	)
+)
+
+(defrule R22
+      	(or
+        	(Sintoma (Sensibilidad "Frio"))
+        	(Sintoma (Sensibilidad "Calor"))
+	)
+	(Sintoma (Dolor "En las articulaciones temporomandibulares"))
+	(Sintoma (Inflamacion "Hinchazon de las encias"))
+	=>
+	(assert
+		(Presuncion
+			(PosibleTrastorno "Pulpitis")
+			(Probabilidad "Muy Alta")
+			(Justificacion "Sensibilidad al frio o al calor, dolor en la mandibula e hinchazon de las encias")
+		)
+	)
+)
+
+(defrule R23
+    (Sintoma (Sensibilidad "Frio"))
+    (Sintoma (Dolor "Al morder"))
+    (Sintoma (Inflamacion "Enrojecimiento de las encias"))
+    =>
+    (assert
+        (Presuncion
+            (PosibleTrastorno "Fractura")
+            (Probabilidad "Muy Alta")
+            (Justificacion "Sensibilidad al frio (aire/agua), dolores al morder y inflamacion en las encias")
+        )
+    )
+)
+
+(defrule R24
+	(or
+		(Sintoma (Inflamacion "Enrojecimiento de las encias"))
+		(Sintoma (Inflamacion "Sangrado de encias"))
+	)
+	(or
+		(FactorDeRiesgo (Enfermedad "Diabetes"))
+		(FactorDeRiesgo (Habito "Deficiencia de vitamina C"))
+	)
+	=>
+	(assert
+		(Presuncion
+			(PosibleTrastorno "Gingivitis")
+			(Probabilidad "Muy Alta")
+			(Justificacion "Inflamacion o sangrado de encias junto con diabetes o falta de vitamina C")
+		)
+	)
+)
+
+(defrule R25
+	(Sintoma (Inflamacion "Sangrado de encias"))
+	(or
+		(Sintoma (Salud "Exceso de saliva"))
+		(Sintoma (Salud "Mal aliento"))
+	)
+	=>
+	(assert
+		(Presuncion
+			(PosibleTrastorno "Gingivitis Ulceronecrotizante Aguda")
+			(Probabilidad "Muy Alta")
+			(Justificacion "Sangrado de encias junto a exceso de saliva o muy mal aliento")
+		)
+	)
+)
+
+(defrule R26
+	(Sintoma (Dolor "Al morder"))
+	(Sintoma (Salud "Exceso de placa"))
+	(Sintoma (Salud "Mal aliento"))
+	(or
+		(FactorDeRiesgo (Habito "Fumar"))
+		(FactorDeRiesgo (Enfermedad "Obesidad"))
+		(FactorDeRiesgo (Habito "Deficiencia de vitamina C"))
+		(FactorDeRiesgo (Habito "Control inadecuado de la placa"))
+	)
+	=>
+	(assert
+		(Presuncion
+			(PosibleTrastorno "Periodontitis")
+			(Probabilidad "Muy Alta")
+			(Justificacion "Dolores al morder, exceso visible de placa y mal aliento; malos habitos como fumar frecuentemente, dieta pobre en vitamina C o mal control de la placa")
+		)
+	)
+)
+
+(defrule R27
+	(Sintoma (Inflamacion "Bruxismo"))
+	(or
+		(Sintoma (Dolor "De cabeza"))
+		(Sintoma (Dolor "En las articulaciones temporomandibulares"))
+	)
+	=>
+	(assert
+		(Presuncion
+			(PosibleTrastorno "Dolor Miofascial")
+			(Probabilidad "Muy Alta")
+			(Justificacion "Bruxismo y dolores de cabeza o temporomandibulares")
+		)
+	)
+)
+
+(defrule R28
+	(Sintoma (Dolor "Al morder"))
+	(Sintoma (Dolor "En las articulaciones temporomandibulares"))
+	(Sintoma (Inflamacion "Hinchazon de las encias"))
+	=>
+	(assert
+		(Presuncion
+			(PosibleTrastorno "Dislocacion Mandibular")
+			(Probabilidad "Muy Alta")
+			(Justificacion "Dolores al morder y en las articulaciones de la mandibula, hinchazon visible de las encias")
+		)
+	)
+)
+
 (defrule R1
     (Sintoma (Sensibilidad "Frio"))
     =>

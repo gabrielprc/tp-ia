@@ -282,6 +282,22 @@
                               <Font size="14.0" />
                            </font>
                         </CheckBox>
+                        <CheckBox fx:id="controlInadecuadoDeLaPlacaCheck" mnemonicParsing="false" text="Control inadecuado de la placa">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="deficienciaDeVitaminaCCheck" mnemonicParsing="false" text="Deficiencia de vitamina C">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
                      </children>
                   </VBox>
                </children>
