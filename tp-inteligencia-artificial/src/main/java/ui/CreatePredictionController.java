@@ -80,7 +80,7 @@ public class CreatePredictionController {
 
     //@xdddd
     private void checkByList(List<?> list, HBox hBox) {
-        hBox.getChildren().forEach(vBox ->{
+        hBox.getChildren().forEach(vBox -> {
             ((VBox)vBox).getChildren().filtered(node -> node instanceof CheckBox).forEach(node -> {
                 CheckBox checkBox = (CheckBox)node;
                 checkBox.setSelected(list.stream().anyMatch(item -> {

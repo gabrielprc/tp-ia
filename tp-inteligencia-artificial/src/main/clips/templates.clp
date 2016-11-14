@@ -15,7 +15,8 @@
 		                    "Sin Informacion"
                             "Al morder" 
                             "Sensacion de diente flojo" 
-                            "De cabeza" "Al tragar" 
+                            "De cabeza"
+                            "Al tragar"
                             "En las articulaciones temporomandibulares")
                       (default "Sin Informacion")
 	)
@@ -56,7 +57,7 @@
                             "Control inadecuado de la placa" 
                             "Fumar" 
                             "Deficiencia de vitamina C" 
-                            "Dieta excesiva en carbohidratos y azucares" )
+                            "Dieta excesiva en carbohidratos y azucares")
                       (default "Sin Informacion")
     )
 )
