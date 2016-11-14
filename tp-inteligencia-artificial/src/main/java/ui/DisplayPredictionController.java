@@ -34,7 +34,7 @@ public class DisplayPredictionController implements Initializable{
 
         List<DisplayPredictionView> predictionViews = new ArrayList<DisplayPredictionView>();
 
-        textLabel.setText("El diagnóstico para el paciente es:");
+        textLabel.setText("Diagnóstico para el paciente ");
         patientLabel.setText(patient);
 
         for(Prediction p : predictions) {

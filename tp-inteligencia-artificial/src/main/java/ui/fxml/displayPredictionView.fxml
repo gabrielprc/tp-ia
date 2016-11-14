@@ -33,14 +33,14 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="600.0" spacing="5.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="textLabel">
+                  <Label fx:id="textLabel" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="patientLabel">
+                  <Label fx:id="patientLabel" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
